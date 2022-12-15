@@ -16,10 +16,12 @@ export class PrismaNotificationMapper {
   }
 
   static toDomain(raw: RawNotification): Notification {
+    const content = new Content(raw.content);
+
     return new Notification(
       {
+        content,
         category: raw.category,
-        content: new Content(raw.content),
         recipientId: raw.recipientId,
         createdAt: raw.createdAt,
         readAt: raw.readAt,
