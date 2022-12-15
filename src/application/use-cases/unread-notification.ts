@@ -1,7 +1,9 @@
 import { Injectable } from '@nestjs/common';
 
 import { NotificationsRepository } from '../repositories/notifications-repository';
+
 import { NotificationNotFound } from './errors/notification-not-found';
+import { NotificationNotRead } from './errors/notification-not-read';
 
 type UnreadNotificationRequest = {
   notificationId: string;
@@ -24,6 +26,10 @@ export class UnreadNotification {
 
     if (!notification) {
       throw new NotificationNotFound();
+    }
+
+    if (!notification.readAt) {
+      throw new NotificationNotRead();
     }
 
     notification.unread();
