@@ -1,3 +1,5 @@
+import { InvalidContentLength } from './errors/invalid-content-length';
+
 export class Content {
   private readonly content: string;
 
@@ -13,7 +15,7 @@ export class Content {
     const isContentLengthValid = this.validateContentLength(content);
 
     if (!isContentLengthValid) {
-      throw new Error('Content length error');
+      throw new InvalidContentLength();
     }
 
     this.content = content;
