@@ -6,4 +6,4 @@ A microservice built with Node, Nestjs, TDD, TypeScript and clean concepts.
 
 1. npm install
 2. npx prisma migrate dev
-3. npm start:dev
+3. npm run start:dev
